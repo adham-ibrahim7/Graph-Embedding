@@ -1,3 +1,6 @@
+from typing import List, Any
+
+
 class Graph:
 
     def __init__(self, V):
@@ -10,7 +13,14 @@ class Graph:
         self.adj[v].append(u)
         self.E += 1
 
+    def add_directed_edge(self, u, v):
+        self.adj[u].append(v)
+        self.E += 1
 
-g = Graph(10)
-
-g.add_edge(0, 1)
+    def __str__(self):
+        str_rep = ""
+        for u in range(self.V):
+            str_rep += str(u) + ": " + str(self.adj[u])
+            if u < self.V-1:
+                str_rep += "\n"
+        return str_rep
